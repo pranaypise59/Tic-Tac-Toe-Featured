@@ -14,7 +14,7 @@ const App = () => {
   const [gameStatus, setGameStatus] = useState('play')
   const current = history[currentMove];
 
-  const winner = calculateWinner(current.board)
+  const {winner, winningsquares} = calculateWinner(current.board)
   const handleSquareClick = (position) => {
     if (current.board[position] || winner) {
       return;
@@ -60,7 +60,7 @@ const App = () => {
       ? <h2 className='winnerheading'>{`The Winner is ${current.isXturn ? 'O' : 'X'}`}</h2> 
       :(history.length === 10?<h2 className='winnerheading'>X & O tied</h2>:<h2 className='turnheading'>{`Next Turn ${current.isXturn ? 'X' : 'O'}`}</h2>)
       }
-      <Board board={current.board} handleSquareClick={handleSquareClick} />
+      <Board board={current.board} handleSquareClick={handleSquareClick} winningsquares={winningsquares} />
       {winner || history.length === 10 &&
         <button onClick={() => { restart() }} className="accept">Restart</button>
       }

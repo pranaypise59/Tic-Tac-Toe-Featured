@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Square = (props) => {
+const Square = ({onClick, IswinningSquare,value}) => {
   return (
-    <button className='square' onClick={props.onClick}>{props.value}</button>
+    <button className='square' onClick={onClick} style={{fontWeight:`${IswinningSquare?'bold':'normal'}`,backgroundColor:`${IswinningSquare?'skyblue':''}`,color:`${IswinningSquare?'white':''}`}} >{value}</button>
   )
 }
 
