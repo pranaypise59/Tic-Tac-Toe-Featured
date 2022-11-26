@@ -65,7 +65,7 @@ const App = () => {
     <>
       <h1 style={{ textAlign: 'center', margin: 40 }}>TIC TAC TOE</h1>
       {winner 
-      ? <h2 className='winnerheading'>{`The Winner is ${current.isXturn ? 'X' : 'O'}`}</h2> 
+      ? <h2 className='winnerheading'>{`The Winner is ${current.isXturn ? 'O' : 'X'}`}</h2> 
       :<h2 className='turnheading'>{`Next Turn ${current.isXturn ? 'X' : 'O'}`}</h2>
       }
       <Board board={current.board} handleSquareClick={handleSquareClick} />
@@ -73,7 +73,8 @@ const App = () => {
         <button onClick={() => { restart() }} class="accept">Restart</button>
       }
       <History history={history} moveTo={moveTo} currentMove={currentMove}/>
-      {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} />}
+
+      {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} history={history} winner={winner}/>}
     </>
   )
 }
