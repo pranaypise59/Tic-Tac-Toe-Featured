@@ -72,7 +72,7 @@ const App = () => {
       {winner &&
         <button onClick={() => { restart() }} class="accept">Restart</button>
       }
-      <History history={history} moveTo={moveTo} />
+      <History history={history} moveTo={moveTo} currentMove={currentMove}/>
       {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} />}
     </>
   )
