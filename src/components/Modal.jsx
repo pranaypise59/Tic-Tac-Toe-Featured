@@ -1,17 +1,16 @@
 import React from 'react'
 
-const Modal = ({history, resume, restart }) => {
+const Modal = ({ history, resume, restart, winner,current }) => {
+    const allmoved = current.board.every((el)=>{el!==null})
     return (
-        <div class="Modalcontainer">
-            <div class="cookiesContent" id="cookiesPopup">
-                <button class="close" onClick={() => { resume() }}>✖</button>
-                <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
-                
-                <p>Do you Want to Continue the Game?</p>
+        <div className="Modalcontainer">
+            <div className="cookiesContent" id="cookiesPopup">
+                <button className="close" onClick={() => { resume() }}>✖</button>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMa2SCT-WfjrThbnxhoNliTEgmFok4rYy-A&usqp=CAU" />
 
-                {history.length !==9 ?<button class="accept" onClick={() => { resume() }}>Continue Playing</button>:''}
+                {winner ? <><div><span className="winner">{winner}</span> Won the Math</div><button className="restart" onClick={() => { restart() }}>Restart</button></>:(<><div>Do you want to Continue?</div><button className="accept" onClick={() => { resume() }}>Continue Game</button><button className="restart" onClick={() => { restart() }}>Restart</button></>)}
 
-                <button class="restart" onClick={() => {restart()}}>Restart</button>
+
             </div>
         </div>
     )

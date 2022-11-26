@@ -19,19 +19,12 @@ const App = () => {
     if (current.board[position] || winner) {
       return;
     }
-    if (winner) {
-      setGameStatus('Win')
-      setResumeScreen(true)
-      return;
-    }
     if (currentMove !== history.length - 1) {
       setGameStatus('Resumed')
       setResumeScreen(true)
       return;
     }
-    if (history.length === 9) {
-      setResumeScreen(true)
-    }
+  
     let last = history[history.length - 1];
     const newBoard = last.board.map((square, pos) => {
       if (pos === position) {
@@ -46,7 +39,6 @@ const App = () => {
 
   const moveTo = (index) => {
     setCurrentMove(index)
-    set
   };
 
   const resume = () => {
@@ -66,15 +58,15 @@ const App = () => {
       <h1 style={{ textAlign: 'center', margin: 40 }}>TIC TAC TOE</h1>
       {winner 
       ? <h2 className='winnerheading'>{`The Winner is ${current.isXturn ? 'O' : 'X'}`}</h2> 
-      :<h2 className='turnheading'>{`Next Turn ${current.isXturn ? 'X' : 'O'}`}</h2>
+      :(history.length === 10?<h2 className='winnerheading'>X & O tied</h2>:<h2 className='turnheading'>{`Next Turn ${current.isXturn ? 'X' : 'O'}`}</h2>)
       }
       <Board board={current.board} handleSquareClick={handleSquareClick} />
-      {winner &&
-        <button onClick={() => { restart() }} class="accept">Restart</button>
+      {winner || history.length === 10 &&
+        <button onClick={() => { restart() }} className="accept">Restart</button>
       }
       <History history={history} moveTo={moveTo} currentMove={currentMove}/>
 
-      {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} history={history} winner={winner}/>}
+      {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} history={history} winner={winner} current={current}/>}
     </>
   )
 }

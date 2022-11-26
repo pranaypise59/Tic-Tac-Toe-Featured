@@ -5,8 +5,8 @@ const History = ({history,moveTo,currentMove}) => {
         <div className='history'>
             <h3>Previous Steps</h3>
             <div>
-                {history.map((history, index) => {
-                    return <button style={{backgroundColor: index === currentMove?'aquamarine':'antiquewhite'}} onClick={()=>{moveTo(index)}}>{index === 0 ? 'Start The Game':`Go to #${index}`}</button>
+                {history.map((_, index) => {
+                    return <button key={index} style={{backgroundColor: index === currentMove?'aquamarine':'antiquewhite'}} onClick={()=>{moveTo(index)}}>{index === 0 ? 'Start The Game':`Go to #${index}`}</button>
                 })}
             </div>
         </div>
