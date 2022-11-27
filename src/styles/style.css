@@ -1,5 +1,6 @@
 
 .context {
+    min-height: 100vh;
     min-width: 100%;
     position: relative;
     top:0;

@@ -13,12 +13,11 @@ $color-red:rgb(245, 19, 19);
 $color-blue:rgb(106, 204, 243);
 
 body {
-
+  background-color: $color-theme;
     padding: 0;
     margin: 0;
     font-family: 'Exo', sans-serif;
   }
-  
 .context{
   .container{
     h1{
@@ -87,7 +86,7 @@ body {
     align-items: center;
     justify-content: center;
     color: $color-white;
-    background-color: $color-theme;
+    // background-color: $color-theme;
 
     button{
       background-color: antiquewhite;
