@@ -1,24 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+$color-theme:#4e54c8;
+$color-orange: #ef8a0f;
+$color-white:rgb(246, 245, 245);
+$color-green:rgb(69, 238, 69);
+$color-red:rgb(245, 19, 19);
+$color-blue:rgb(106, 204, 243);
+
 body {
+
     padding: 0;
     margin: 0;
+    font-family: 'Exo', sans-serif;
   }
   
-  button {
-    background: none;
-    border: none;
-    outline: none;
-    &:hover {
-      cursor: pointer;
+.context{
+  .container{
+    h1{
+      text-align: center;
+      color: $color-white;
+      font-size: 50px;
+    }
+    .winnerheading{
+      color: $color-white;
+      text-align: center;
+      width: 50%;
+      font-size: 2rem;
+      margin: auto;
+      margin-bottom: 25px;
+      background-color: $color-red;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      span{
+        color: $color-green;
+        font-size: 2.5rem;
+      }
+    }
+    .turnheading{
+      color: $color-white;
+      text-align: center;
+      margin: auto;
+      font-size: 2rem;
+      margin-bottom: 25px;
     }
   }
-  
-  .app {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+}
   .board {
     display: flex;
     flex-direction: column;
@@ -27,49 +58,45 @@ body {
     .board-row {
       display: flex;
       flex-direction: row;
-      border-bottom: 2px solid #000;
+      // border-bottom: 2px solid #000;
       &:last-child {
-        border-bottom: none;
+        // border-bottom: none;
       }
       .square {
-        width: 80px;
-        height: 80px;
-        border-right: 2px solid #000;
-        font-size: 2.5rem;
+        width: 5rem;
+        height: 5rem;
+        margin: 1px;
+        font-size: 3.5rem;
         padding: 0;
         overflow: hidden;
         transition: all 0.2s;
+        cursor: pointer;
         &:last-child {
-          border-right: none;
+          // border-right: none;
         }
       }
     }
   }
-  .winnerheading{
-    color: red;
-    text-align: center;
-    font-weight: bold;
-  }
-  .turnheading{
-    text-align: center;
-  }
+
   .history{
-    background-color: skyblue;
-    width: 100%;
+    width: 100vw;
     margin: 20px auto;
     padding: 20px;
     display: flex;
-    position: fixed;
-    bottom: 0px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: $color-white;
+    background-color: $color-theme;
+
     button{
       background-color: antiquewhite;
-      border: 2px solid black;
+      border: 2px solid rgb(18, 228, 158);
       border-radius: 5px;
-      height: 30px;
+      min-height: 30px;
       margin: 4px;
+      padding: 5px;
+      cursor: pointer;
       &:hover{
         background-color: aquamarine;
       }
@@ -152,7 +179,7 @@ body {
   }
   
   .accept {
-    background-color: #ed6755;
+    background-color: #ee4f3a;
     border: none;
     border-radius: 5px;
     width: 200px;
@@ -160,10 +187,11 @@ body {
     margin:auto;
     margin-top: 20px;
     padding: 14px;
-    font-size: 16px;
+    font-size: 1.2rem;
     color: white;
-    box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+    cursor: pointer;
+    box-shadow: 0px 6px 18px -5px rgb(238, 80, 59);
     &:hover{
-      opacity: 0.8;
+      background-color: $color-red;
     }
   }

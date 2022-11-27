@@ -4,6 +4,7 @@ import History from './components/History';
 import Modal from './components/Modal';
 import { calculateWinner } from './components/winner';
 import './styles/root.scss'
+import './styles/style.css'
 const App = () => {
 
   const [history, setHistory] = useState([
@@ -14,7 +15,7 @@ const App = () => {
   const [gameStatus, setGameStatus] = useState('play')
   const current = history[currentMove];
 
-  const {winner, winningsquares} = calculateWinner(current.board)
+  const { winner, winningsquares } = calculateWinner(current.board)
   const handleSquareClick = (position) => {
     if (current.board[position] || winner) {
       return;
@@ -24,7 +25,7 @@ const App = () => {
       setResumeScreen(true)
       return;
     }
-  
+
     let last = history[history.length - 1];
     const newBoard = last.board.map((square, pos) => {
       if (pos === position) {
@@ -55,18 +56,41 @@ const App = () => {
   }
   return (
     <>
-      <h1 style={{ textAlign: 'center', margin: 40 }}>TIC TAC TOE</h1>
-      {winner 
-      ? <h2 className='winnerheading'>{`The Winner is ${current.isXturn ? 'O' : 'X'}`}</h2> 
-      :(history.length === 10?<h2 className='winnerheading'>X & O tied</h2>:<h2 className='turnheading'>{`Next Turn ${current.isXturn ? 'X' : 'O'}`}</h2>)
-      }
-      <Board board={current.board} handleSquareClick={handleSquareClick} winningsquares={winningsquares} />
-      {winner || history.length === 10 &&
-        <button onClick={() => { restart() }} className="accept">Restart</button>
-      }
-      <History history={history} moveTo={moveTo} currentMove={currentMove}/>
+      <div class="context">
+        <div className='container'>
+          <h1 style={{ textAlign: 'center', margin: 40 }}>TIC TAC TOE</h1>
+          {winner
+            ? <h2 className='winnerheading'>The Winner is <span>{`${current.isXturn ? 'O' : 'X'}`}</span></h2>
+            : (history.length === 10 ? <h2 className='winnerheading'>X & O tied</h2> : <h2 className='turnheading'>{`Next Turn ${current.isXturn ? 'X' : 'O'}`}</h2>)
+          }
+          <Board board={current.board} handleSquareClick={handleSquareClick} winningsquares={winningsquares} />
+          {winner || history.length === 10 &&
+            <button onClick={() => { restart() }} className="accept">Restart</button>
+          }
+          {winner &&
+            <button onClick={() => { restart() }} className="accept">Restart</button>
+          }
+          <History history={history} moveTo={moveTo} currentMove={currentMove} />
 
-      {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} history={history} winner={winner} current={current}/>}
+          {resumeScreen && <Modal setresumeScreen={setResumeScreen} resume={resume} restart={restart} history={history} winner={winner} current={current} />}
+        </div>
+
+
+        <div class="area" >
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div >
     </>
   )
 }
